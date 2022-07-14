@@ -16,7 +16,7 @@
 	<br>
 
 	<%
-	User user = (User) session.getAttribute("userSession");
+	User user1 = (User) session.getAttribute("userSession");
 	%>
 
 	<div class="container ">
@@ -26,7 +26,7 @@
 
 			<form action="SaveNoteServlet" method="post">
 			
-			<input type="hidden" name="userId" value="<%=user.getUserId()%>"/>
+			<input type="hidden" name="userId" value="<%= user1.getUserId()%>"/>
 			
 				<div class="form-group">
 					<label for="exampleInputEmail1">Note title</label> <input

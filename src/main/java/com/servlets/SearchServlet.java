@@ -35,6 +35,7 @@ System.out.println("servelet is working");
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	String value=request.getParameter("searchvalue");
+	int id=Integer.parseInt(request.getParameter("id"));
 	System.out.println(value);
 	SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	
@@ -48,15 +49,15 @@ Set<Note> list=new LinkedHashSet<Note>();
 for (int i = 0; i < 3; i++) {
 	switch (i) {
 	case 0:
-		Query<Note> q=session.createQuery("from Note as n where n.title like :value");
+		Query<Note> q=session.createQuery("from Note as n where n.title like :value and n.userID = :id");
 		q.setParameter("value", "%"+value+"%");
-	
+		q.setParameter("id",id );
 		list.addAll(q.getResultList());
 		break;
 	case 1:
-		Query<Note> q1=session.createQuery("from Note as n where n.content like :value");
+		Query<Note> q1=session.createQuery("from Note as n where n.content like :value and n.userID = :id");
 		q1.setParameter("value", "%"+value+"%");
-
+		q1.setParameter("id",id );
 		list.addAll(q1.getResultList());
 		break;
 //	case 2:

@@ -18,8 +18,7 @@ function show() {
 </script>
 
 <% 
-boolean value=(boolean)request.getAttribute("alert");
-if(value)
+
 { %>
 <script>
 

@@ -1,3 +1,4 @@
+<%@page import="com.entities.User"%>
 <nav class="navbar navbar-expand-lg navbar-dark purple" style="font-size: large;">
 
 <div class="container">
@@ -22,9 +23,16 @@
         <a class="nav-link disabled" href="all_notes.jsp">Show Notes</a>
       </li>
     </ul>
+    
+    
+    <% 
+    User person = (User) session.getAttribute("userSession");
+    int id=person.getUserId();
+    %>
     <form class="form-inline my-2 my-lg-0" action="SearchServlet" method="get">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchvalue">
       
+      <input type="hidden" value=<%=id %> name="id">
       
   <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
   
